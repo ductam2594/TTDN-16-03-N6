@@ -1413,7 +1413,7 @@ msgstr "Báo cáo Chung Tài khoản"
 #: model:ir.model.fields,field_description:account.field_account_account__currency_id
 #: model:ir.model.fields,field_description:account.field_account_account_template__currency_id
 msgid "Account Currency"
-msgstr "Đơn vị tiền tệ tài khoản"
+msgstr "Tiền tệ tài khoản"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_fiscal_position_account_template__account_dest_id
@@ -1488,7 +1488,7 @@ msgstr "Đảo bút toán kế toán"
 #: model:ir.model.fields,field_description:account.field_account_account__name
 #: model_terms:ir.ui.view,arch_db:account.view_account_form
 msgid "Account Name"
-msgstr "Tên tài khoản kế toán"
+msgstr "Tên tài khoản"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_journal__bank_acc_number
@@ -2295,7 +2295,7 @@ msgstr "Cho phép cấu hình thuê dùng theo kế toàn dòng tiền"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_account__allowed_journal_ids
 msgid "Allowed Journals"
-msgstr "Bút toán được phép"
+msgstr "Sổ nhật ký được phép"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_journal__type_control_ids
@@ -3887,7 +3887,7 @@ msgstr "Đóng vào"
 #: model:ir.model.fields,field_description:account.field_account_tax_report_line__code
 #: model_terms:ir.ui.view,arch_db:account.view_account_form
 msgid "Code"
-msgstr "Mã loại cọc"
+msgstr "Mã"
 
 #. module: account
 #: model_terms:ir.ui.view,arch_db:account.view_account_group_form
@@ -5150,7 +5150,7 @@ msgstr "Thuế bán hàng mặc định"
 #: model_terms:ir.ui.view,arch_db:account.view_account_chart_template_form
 #: model_terms:ir.ui.view,arch_db:account.view_account_template_form
 msgid "Default Taxes"
-msgstr "Các loại thuế mặc định"
+msgstr "Thuế mặc định"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_res_config_settings__use_invoice_terms
@@ -5292,7 +5292,7 @@ msgstr "Xoá bản sao thông điệp"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_account__deprecated
 msgid "Deprecated"
-msgstr "Không nhận"
+msgstr "Đã ngừng sử dụng"
 
 #. module: account
 #: model:account.account.type,name:account.data_account_type_depreciation
@@ -12624,7 +12624,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:account.account_tag_view_tree
 #: model_terms:ir.ui.view,arch_db:account.view_account_analytic_default_form
 msgid "Tags"
-msgstr "Từ khóa"
+msgstr "Thẻ"
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_move_line__tax_tag_ids

@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_loai_tai_san_user,loai_tai_san.user,model_loai_tai_san,base.group_user,1,1,1,1
+access_tai_san_user,tai_san.user,model_tai_san,base.group_user,1,1,1,1
+access_khau_hao_user,khau_hao.user,model_khau_hao,base.group_user,1,1,1,1
+access_phieu_kiem_ke_user,phieu_kiem_ke.user,model_phieu_kiem_ke,base.group_user,1,1,1,1
+access_phieu_kiem_ke_chi_tiet_user,phieu_kiem_ke.chi_tiet.user,model_phieu_kiem_ke_chi_tiet,base.group_user,1,1,1,1
+access_tinh_khau_hao_wizard_user,tinh.khau.hao.wizard.user,model_tinh_khau_hao_wizard,base.group_user,1,1,1,1
+access_bao_tri_sua_chua_user,bao_tri_sua_chua.user,model_bao_tri_sua_chua,base.group_user,1,1,1,1
+access_thanh_ly_tai_san_user,thanh_ly_tai_san.user,model_thanh_ly_tai_san,base.group_user,1,1,1,1
+access_ai_chatbot_user,ai.chatbot.user,model_ai_chatbot,base.group_user,1,1,1,1
+access_ai_config_wizard_user,ai.config.wizard.user,model_ai_config_wizard,base.group_user,1,1,1,1
+access_tai_san_image_user,tai_san.image.user,model_tai_san_image,base.group_user,1,1,1,1
+
+

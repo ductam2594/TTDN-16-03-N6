@@ -1,0 +1,66 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* quan_ly_tai_san
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-12 13:00:00\n"
+"PO-Revision-Date: 2026-01-12 13:00:00\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: vi_VN\n"
+
+#. module: quan_ly_tai_san
+#: model:ir.model,name:quan_ly_tai_san.model_tai_san
+msgid "Tài sản"
+msgstr "Tài sản"
+
+#. module: quan_ly_tai_san
+#: model:ir.model,name:quan_ly_tai_san.model_loai_tai_san
+msgid "Loại Tài sản"
+msgstr "Loại Tài sản"
+
+#. module: quan_ly_tai_san
+#: model:ir.model,name:quan_ly_tai_san.model_khau_hao
+msgid "Khấu hao Tài sản"
+msgstr "Khấu hao Tài sản"
+
+#. module: quan_ly_tai_san
+#: model:ir.model,name:quan_ly_tai_san.model_bao_tri_sua_chua
+msgid "Bảo trì & Sửa chữa Tài sản"
+msgstr "Bảo trì & Sửa chữa Tài sản"
+
+#. module: quan_ly_tai_san
+#: model:ir.model,name:quan_ly_tai_san.model_phieu_kiem_ke
+msgid "Phiếu Kiểm kê Tài sản"
+msgstr "Phiếu Kiểm kê Tài sản"
+
+#. module: quan_ly_tai_san
+#: model:ir.model,name:quan_ly_tai_san.model_thanh_ly_tai_san
+msgid "Thanh lý Tài sản"
+msgstr "Thanh lý Tài sản"
+
+#. module: quan_ly_tai_san
+#: model:ir.model,name:quan_ly_tai_san.model_tinh_khau_hao_wizard
+msgid "Tính khấu hao tự động"
+msgstr "Tính khấu hao tự động"
+
+#. module: quan_ly_tai_san
+#: model:ir.model,name:quan_ly_tai_san.model_phieu_kiem_ke_chi_tiet
+msgid "Chi tiết Phiếu Kiểm kê"
+msgstr "Chi tiết Phiếu Kiểm kê"
+
+#. module: quan_ly_tai_san
+#: code:addons/quan_ly_tai_san/models/tai_san.py:0
+#: code:addons/quan_ly_tai_san/models/bao_tri_sua_chua.py:0
+#: code:addons/quan_ly_tai_san/models/phieu_kiem_ke.py:0
+#: code:addons/quan_ly_tai_san/models/thanh_ly_tai_san.py:0
+#, python-format
+msgid "Mới"
+msgstr "Mới"
+

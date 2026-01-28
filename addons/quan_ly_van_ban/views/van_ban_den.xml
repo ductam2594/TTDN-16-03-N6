@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_van_ban_den_form" model="ir.ui.view">
+            <field name="name">van_ban_den.form</field>
+            <field name="model">van_ban_den</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_processing" string="Đang xử lý" type="object" 
+                                attrs="{'invisible': [('state', '!=', 'new')]}" 
+                                class="oe_highlight"/>
+                        <button name="action_pending" string="Chờ duyệt" type="object" 
+                                attrs="{'invisible': [('state', 'not in', ['processing', 'new'])]}" 
+                                class="oe_highlight"/>
+                        <button name="action_done" string="Hoàn thành" type="object" 
+                                attrs="{'invisible': [('state', 'not in', ['processing', 'pending'])]}" 
+                                class="oe_highlight"/>
+                        <button name="action_cancel" string="Hủy" type="object" 
+                                attrs="{'invisible': [('state', 'in', ['cancelled', 'done'])]}"/>
+                        <field name="state" widget="statusbar" statusbar_visible="new,processing,pending,done"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="ten_van_ban" placeholder="Tên văn bản..."/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group string="Thông tin chung" col="2">
+                                <field name="so_van_ban_den"/>
+                                <field name="so_hieu_van_ban"/>
+                                <field name="loai_van_ban_id"/>
+                                <field name="noi_gui_den"/>
+                            </group>
+                            <group string="Ngày tháng" col="2">
+                                <field name="ngay_nhan"/>
+                                <field name="ngay_den_han"/>
+                                <field name="ngay_hoan_thanh" attrs="{'readonly': [('state', '!=', 'done')]}"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Nhân viên liên quan" col="2">
+                                <field name="nhan_vien_xu_ly_id"/>
+                                <field name="nhan_vien_ky_id"/>
+                                <field name="nhan_vien_nhan_ids" widget="many2many_tags" colspan="2"/>
+                            </group>
+                        </group>
+                        <group string="Mô tả">
+                            <field name="mo_ta" placeholder="Mô tả nội dung văn bản..."/>
+                        </group>
+                        <group string="Kết quả xử lý">
+                            <field name="ket_qua_xu_ly" placeholder="Kết quả xử lý văn bản..." 
+                                   attrs="{'readonly': [('state', '!=', 'done')]}"/>
+                        </group>
+                        <group string="Ghi chú">
+                            <field name="ghi_chu" placeholder="Ghi chú..."/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_van_ban_den_tree" model="ir.ui.view">
+            <field name="name">van_ban_den.tree</field>
+            <field name="model">van_ban_den</field>
+            <field name="arch" type="xml">
+                <tree decoration-info="state == 'new'" 
+                      decoration-muted="state == 'cancelled'"
+                      decoration-success="state == 'done'">
+                    <field name="so_van_ban_den"/>
+                    <field name="ten_van_ban"/>
+                    <field name="loai_van_ban_id"/>
+                    <field name="ngay_nhan"/>
+                    <field name="ngay_den_han"/>
+                    <field name="nhan_vien_xu_ly_id"/>
+                    <field name="noi_gui_den"/>
+                    <field name="state" widget="badge" 
+                           decoration-info="state == 'new' or state == 'processing'"
+                           decoration-warning="state == 'pending'"
+                           decoration-success="state == 'done'"
+                           decoration-danger="state == 'cancelled'"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="van_ban_den_search">
+            <field name="model">van_ban_den</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="ten_van_ban"/>
+                    <field name="so_van_ban_den"/>
+                    <field name="so_hieu_van_ban"/>
+                    <field name="noi_gui_den"/>
+                    <field name="nhan_vien_xu_ly_id"/>
+                    <field name="nhan_vien_ky_id"/>
+                    <field name="loai_van_ban_id"/>
+                    <filter string="Mới nhận" name="new" domain="[('state', '=', 'new')]"/>
+                    <filter string="Đang xử lý" name="processing" domain="[('state', '=', 'processing')]"/>
+                    <filter string="Chờ duyệt" name="pending" domain="[('state', '=', 'pending')]"/>
+                    <filter string="Hoàn thành" name="done" domain="[('state', '=', 'done')]"/>
+                    <separator/>
+                    <filter string="Quá hạn" name="overdue" 
+                            domain="[('ngay_den_han', '&lt;', context_today().strftime('%Y-%m-%d')), ('state', 'not in', ['done', 'cancelled'])]"/>
+                    <filter string="Tháng này" name="this_month" 
+                            domain="[('ngay_nhan', '&gt;=', (context_today().replace(day=1)).strftime('%Y-%m-%d')), ('ngay_nhan', '&lt;=', context_today().strftime('%Y-%m-%d'))]"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_van_ban_den" model="ir.actions.act_window">
+            <field name="name">Văn bản đến</field>
+            <field name="res_model">van_ban_den</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="van_ban_den_search"/>
+            <field name="context">{'search_default_new': 1}</field>
+        </record>
+    </data>
+</odoo>
+        
+    

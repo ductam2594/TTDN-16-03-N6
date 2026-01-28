@@ -623,7 +623,24 @@ class IrActionsServer(models.Model):
                     raise AccessError(_("You don't have enough access rights to run this action."))
             else:
                 try:
+                    # Check if model exists in registry
+                    if action.model_name not in self.env:
+                        _logger.warning(
+                            "Server action %r (ID: %s) references model %r which does not exist. "
+                            "The action will be skipped. This may happen if the module providing "
+                            "the model is not installed or has been removed.",
+                            action.name, action.id, action.model_name
+                        )
+                        continue
                     self.env[action.model_name].check_access_rights("write")
+                except KeyError:
+                    _logger.warning(
+                        "Server action %r (ID: %s) references model %r which does not exist. "
+                        "The action will be skipped. This may happen if the module providing "
+                        "the model is not installed or has been removed.",
+                        action.name, action.id, action.model_name
+                    )
+                    continue
                 except AccessError:
                     _logger.warning("Forbidden server action %r executed while the user %s does not have access to %s.",
                         action.name, self.env.user.login, action.model_name,

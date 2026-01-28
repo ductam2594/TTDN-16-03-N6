@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_tinh_khau_hao_wizard_form" model="ir.ui.view">
+        <field name="name">tinh.khau.hao.wizard.form</field>
+        <field name="model">tinh.khau.hao.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Tính Khấu hao Tự động">
+                <group>
+                    <field name="thang_khau_hao"/>
+                    <field name="journal_id"/>
+                    <field name="auto_post"/>
+                </group>
+                <footer>
+                    <button string="Tính Khấu hao" name="action_tinh_khau_hao" type="object" 
+                            class="oe_highlight"/>
+                    <button string="Hủy" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_tinh_khau_hao_wizard" model="ir.actions.act_window">
+        <field name="name">Tính Khấu hao Tự động</field>
+        <field name="res_model">tinh.khau.hao.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
+
+
+
+
+
+

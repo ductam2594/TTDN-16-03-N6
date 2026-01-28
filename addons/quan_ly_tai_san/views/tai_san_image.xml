@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- View cho ảnh tài sản -->
+    <record id="view_tai_san_image_form" model="ir.ui.view">
+        <field name="name">tai_san.image.form</field>
+        <field name="model">tai_san.image</field>
+        <field name="arch" type="xml">
+            <form string="Ảnh Tài sản">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="tai_san_id"/>
+                            <field name="name"/>
+                            <field name="loai_anh" readonly="1"/>
+                            <field name="sequence"/>
+                        </group>
+                        <group>
+                            <field name="ngay_upload" readonly="1"/>
+                            <field name="nguoi_upload_id" readonly="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="image" widget="image" class="oe_avatar" 
+                               options="{'preview_image': 'image', 'zoom': true}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tai_san_image_tree" model="ir.ui.view">
+        <field name="name">tai_san.image.tree</field>
+        <field name="model">tai_san.image</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="loai_anh"/>
+                <field name="image" widget="image" class="oe_avatar"/>
+                <field name="ngay_upload"/>
+                <field name="nguoi_upload_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_tai_san_image" model="ir.actions.act_window">
+        <field name="name">Ảnh Tài sản</field>
+        <field name="res_model">tai_san.image</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
+

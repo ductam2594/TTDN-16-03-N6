@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Sequence cho Mã tài sản -->
+        <record id="sequence_tai_san" model="ir.sequence">
+            <field name="name">Mã tài sản</field>
+            <field name="code">tai_san.sequence</field>
+            <field name="prefix">TS</field>
+            <field name="padding">5</field>
+            <field name="number_increment">1</field>
+            <field name="number_next">1</field>
+        </record>
+        
+        <!-- Sequence cho Phiếu kiểm kê -->
+        <record id="sequence_phieu_kiem_ke" model="ir.sequence">
+            <field name="name">Mã phiếu kiểm kê</field>
+            <field name="code">phieu_kiem_ke.sequence</field>
+            <field name="prefix">PKK</field>
+            <field name="padding">5</field>
+            <field name="number_increment">1</field>
+            <field name="number_next">1</field>
+        </record>
+        
+        <!-- Sequence cho Bảo trì & Sửa chữa -->
+        <record id="sequence_bao_tri_sua_chua" model="ir.sequence">
+            <field name="name">Mã phiếu bảo trì</field>
+            <field name="code">bao_tri_sua_chua.sequence</field>
+            <field name="prefix">BT</field>
+            <field name="padding">5</field>
+            <field name="number_increment">1</field>
+            <field name="number_next">1</field>
+        </record>
+        
+        <!-- Sequence cho Thanh lý -->
+        <record id="sequence_thanh_ly_tai_san" model="ir.sequence">
+            <field name="name">Mã phiếu thanh lý</field>
+            <field name="code">thanh_ly_tai_san.sequence</field>
+            <field name="prefix">TL</field>
+            <field name="padding">5</field>
+            <field name="number_increment">1</field>
+            <field name="number_next">1</field>
+        </record>
+        
+        <!-- Scheduled Action: Tự động tính khấu hao hàng tháng -->
+        <!-- Model tai_san sẽ tự động tạo ir.model với external_id là model_tai_san -->
+        <record id="ir_cron_tinh_khau_hao_hang_thang" model="ir.cron" forcecreate="1">
+            <field name="name">Tính khấu hao tài sản hàng tháng</field>
+            <field name="model_id" ref="model_tai_san"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_tinh_khau_hao_hang_thang()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">months</field>
+            <field name="numbercall">-1</field>
+            <field name="active" eval="True"/>
+            <field name="doall" eval="False"/>
+            <field name="priority">5</field>
+            <field name="user_id" ref="base.user_root"/>
+            <!-- Chạy vào ngày 1 hàng tháng lúc 00:00:00 -->
+            <field name="nextcall" eval="(DateTime.now().replace(day=1) + timedelta(days=32)).replace(day=1).strftime('%Y-%m-%d 00:00:00')"/>
+        </record>
+    </data>
+</odoo>
+

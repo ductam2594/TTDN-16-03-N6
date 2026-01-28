@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_bao_tri_sua_chua_tree" model="ir.ui.view">
+        <field name="name">bao_tri_sua_chua.tree</field>
+        <field name="model">bao_tri_sua_chua</field>
+        <field name="arch" type="xml">
+            <tree string="Bảo trì &amp; Sửa chữa" decoration-info="state == 'draft'" 
+                  decoration-warning="state == 'in_progress'" 
+                  decoration-success="state == 'done'">
+                <field name="ma_phieu"/>
+                <field name="tai_san_id"/>
+                <field name="loai_bao_tri"/>
+                <field name="ngay_bao_tri"/>
+                <field name="chi_phi" sum="Tổng chi phí"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_bao_tri_sua_chua_form" model="ir.ui.view">
+        <field name="name">bao_tri_sua_chua.form</field>
+        <field name="model">bao_tri_sua_chua</field>
+        <field name="arch" type="xml">
+            <form string="Bảo trì &amp; Sửa chữa">
+                <header>
+                    <button name="action_start" type="object" string="Bắt đầu" 
+                            class="oe_highlight" 
+                            attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <button name="action_done" type="object" string="Hoàn thành" 
+                            attrs="{'invisible': [('state', 'not in', ['draft', 'in_progress'])]}"/>
+                    <button name="action_cancel" type="object" string="Hủy" 
+                            attrs="{'invisible': [('state', 'in', ['done', 'cancelled'])]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,in_progress,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="ma_phieu"/>
+                            <field name="tai_san_id"/>
+                            <field name="loai_bao_tri"/>
+                            <field name="ngay_bao_tri"/>
+                            <field name="ngay_hoan_thanh"/>
+                        </group>
+                        <group>
+                            <field name="nguoi_thuc_hien_id"/>
+                            <field name="nha_cung_cap_id"/>
+                            <field name="chi_phi"/>
+                            <field name="journal_id"/>
+                            <field name="tai_khoan_chi_phi_id"/>
+                            <field name="tai_khoan_doi_ung_id"/>
+                            <field name="account_move_id" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Mô tả">
+                            <field name="mo_ta" placeholder="Mô tả vấn đề..."/>
+                        </page>
+                        <page string="Giải pháp">
+                            <field name="giai_phap" placeholder="Giải pháp đã thực hiện..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_bao_tri_sua_chua" model="ir.actions.act_window">
+        <field name="name">Bảo trì &amp; Sửa chữa</field>
+        <field name="res_model">bao_tri_sua_chua</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
+

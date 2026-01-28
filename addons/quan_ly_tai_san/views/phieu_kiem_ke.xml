@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_phieu_kiem_ke_tree" model="ir.ui.view">
+        <field name="name">phieu_kiem_ke.tree</field>
+        <field name="model">phieu_kiem_ke</field>
+        <field name="arch" type="xml">
+            <tree string="Phiếu Kiểm kê" decoration-info="state == 'draft'" 
+                  decoration-warning="state == 'confirmed'" 
+                  decoration-success="state == 'done'">
+                <field name="ma_phieu"/>
+                <field name="ngay_kiem_ke"/>
+                <field name="nguoi_kiem_ke_id"/>
+                <field name="phong_ban_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_phieu_kiem_ke_form" model="ir.ui.view">
+        <field name="name">phieu_kiem_ke.form</field>
+        <field name="model">phieu_kiem_ke</field>
+        <field name="arch" type="xml">
+            <form string="Phiếu Kiểm kê">
+                <header>
+                    <button name="action_confirm" type="object" string="Xác nhận" 
+                            class="oe_highlight" 
+                            attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <button name="action_done" type="object" string="Hoàn thành" 
+                            attrs="{'invisible': [('state', '!=', 'confirmed')]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="ma_phieu"/>
+                            <field name="ngay_kiem_ke"/>
+                            <field name="nguoi_kiem_ke_id"/>
+                            <field name="phong_ban_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Chi tiết Kiểm kê">
+                            <field name="chi_tiet_ids" nolabel="1">
+                                <tree>
+                                    <field name="tai_san_id"/>
+                                    <field name="trang_thai_thuc_te"/>
+                                    <field name="co_su_khac_biet" widget="boolean_toggle"/>
+                                    <field name="ghi_chu"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Ghi chú">
+                            <field name="mo_ta" placeholder="Nhập ghi chú..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_phieu_kiem_ke" model="ir.actions.act_window">
+        <field name="name">Phiếu Kiểm kê</field>
+        <field name="res_model">phieu_kiem_ke</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
+
+
+
+
+
+

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_thanh_ly_tai_san_tree" model="ir.ui.view">
+        <field name="name">thanh_ly_tai_san.tree</field>
+        <field name="model">thanh_ly_tai_san</field>
+        <field name="arch" type="xml">
+            <tree string="Thanh lý Tài sản" decoration-info="state == 'draft'" 
+                  decoration-warning="state == 'confirmed'" 
+                  decoration-success="state == 'done'">
+                <field name="ma_phieu"/>
+                <field name="tai_san_id"/>
+                <field name="ngay_thanh_ly"/>
+                <field name="gia_tri_con_lai"/>
+                <field name="gia_tri_thanh_ly"/>
+                <field name="lai_lo" decoration-success="lai_lo &gt; 0" decoration-danger="lai_lo &lt; 0"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_thanh_ly_tai_san_form" model="ir.ui.view">
+        <field name="name">thanh_ly_tai_san.form</field>
+        <field name="model">thanh_ly_tai_san</field>
+        <field name="arch" type="xml">
+            <form string="Thanh lý Tài sản">
+                <header>
+                    <button name="action_confirm" type="object" string="Xác nhận" 
+                            class="oe_highlight" 
+                            attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <button name="action_done" type="object" string="Hoàn thành" 
+                            attrs="{'invisible': [('state', '!=', 'confirmed')]}"/>
+                    <button name="action_cancel" type="object" string="Hủy" 
+                            attrs="{'invisible': [('state', 'in', ['done', 'cancelled'])]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="ma_phieu"/>
+                            <field name="tai_san_id"/>
+                            <field name="ngay_thanh_ly"/>
+                            <field name="ly_do" placeholder="Nhập lý do thanh lý..."/>
+                        </group>
+                        <group string="Giá trị">
+                            <field name="gia_tri_con_lai" readonly="1"/>
+                            <field name="gia_tri_thanh_ly"/>
+                            <field name="lai_lo" readonly="1" 
+                                   decoration-success="lai_lo &gt; 0" 
+                                   decoration-danger="lai_lo &lt; 0"/>
+                        </group>
+                    </group>
+                    <group string="Tài khoản Kế toán">
+                        <field name="journal_id"/>
+                        <field name="tai_khoan_tien_id"/>
+                        <field name="tai_khoan_lai_lo_id"/>
+                        <field name="account_move_id" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_thanh_ly_tai_san" model="ir.actions.act_window">
+        <field name="name">Thanh lý Tài sản</field>
+        <field name="res_model">thanh_ly_tai_san</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
+

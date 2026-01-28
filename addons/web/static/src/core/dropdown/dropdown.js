@@ -223,6 +223,11 @@ export class Dropdown extends Component {
      * @param {DropdownStateChangedPayload} args
      */
     onDropdownStateChanged(args) {
+        // Check if this component or the emitter still exists in the DOM
+        if (!this.el || !args.emitter.el) {
+            return;
+        }
+
         if (this.el.contains(args.emitter.el)) {
             // Do not listen to events emitted by self or children
             return;

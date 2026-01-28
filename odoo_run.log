@@ -1,0 +1,33 @@
+2026-01-27 11:39:08,553 15867 INFO ? odoo: Odoo version 15.0 
+2026-01-27 11:39:08,554 15867 INFO ? odoo: Using configuration file at /home/duy/odoo-fitdnu/odoo.conf 
+2026-01-27 11:39:08,554 15867 INFO ? odoo: addons paths: ['/home/duy/odoo-fitdnu/odoo/addons', '/home/duy/.local/share/Odoo/addons/15.0', '/home/duy/odoo-fitdnu/addons'] 
+2026-01-27 11:39:08,555 15867 INFO ? odoo: database: odoo@localhost:5431 
+2026-01-27 11:39:09,419 15867 INFO ? odoo.addons.base.models.ir_actions_report: You need Wkhtmltopdf to print a pdf version of the reports. 
+Exception in thread odoo.service.httpd:
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/duy/odoo-fitdnu/odoo/service/server.py", line 483, in http_thread
+    self.httpd = ThreadedWSGIServerReloadable(self.interface, self.port, app)
+  File "/home/duy/odoo-fitdnu/odoo/service/server.py", line 149, in __init__
+    super(ThreadedWSGIServerReloadable, self).__init__(host, port, app,
+  File "/home/duy/odoo-fitdnu/venv/lib/python3.10/site-packages/werkzeug/serving.py", line 688, in __init__
+    super().__init__(server_address, handler)  # type: ignore
+  File "/usr/lib/python3.10/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/home/duy/odoo-fitdnu/odoo/service/server.py", line 165, in server_bind
+    super(ThreadedWSGIServerReloadable, self).server_bind()
+  File "/usr/lib/python3.10/http/server.py", line 137, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/usr/lib/python3.10/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+OSError: [Errno 98] Address already in use
+Exception in thread Exception in thread odoo.service.cron.cron1:
+odoo.service.cron.cron0:
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/home/duy/odoo-fitdnu/odoo/service/server.py", line 445, in cron_thread
+  File "/home/duy/odoo-fitdnu/odoo/service/server.py", line 445, in cron_thread
+    pg_conn.poll()

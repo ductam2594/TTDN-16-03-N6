@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Mở rộng view form nhân viên để hiển thị tài sản -->
+    <record id="view_nhan_vien_form_extend" model="ir.ui.view">
+        <field name="name">nhan_vien.form.extend</field>
+        <field name="model">nhan_vien</field>
+        <field name="inherit_id" ref="nhan_su.view_nhan_vien_form"/>
+        <field name="arch" type="xml">
+            <!-- Thêm button tài sản vào header -->
+            <xpath expr="//header" position="inside">
+                <button name="action_view_tai_san" type="object" string="Tài sản" 
+                        class="oe_stat_button" icon="fa-laptop" 
+                        attrs="{'invisible': [('id', '=', False)]}">
+                    <field name="so_luong_tai_san" widget="statinfo" string="Tài sản đang dùng"/>
+                </button>
+            </xpath>
+            
+            <!-- Thêm tab tài sản vào sheet -->
+            <xpath expr="//sheet" position="inside">
+                <notebook>
+                    <page string="Tài sản" name="tai_san_tab">
+                        <group>
+                            <group string="Thống kê Tài sản">
+                                <field name="so_luong_tai_san" readonly="1"/>
+                                <field name="tong_gia_tri_tai_san" readonly="1"/>
+                            </group>
+                        </group>
+                        <field name="tai_san_ids" nolabel="1">
+                            <tree>
+                                <field name="ma_tai_san"/>
+                                <field name="ten_tai_san"/>
+                                <field name="loai_tai_san_id"/>
+                                <field name="gia_tri_nguyen_gia"/>
+                                <field name="gia_tri_con_lai"/>
+                                <field name="trang_thai"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
+
+
+
+
+

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit tai_san form view to add AI Analysis tab -->
+    <record id="view_tai_san_form_ai_extend" model="ir.ui.view">
+        <field name="name">tai_san.form.ai.extend</field>
+        <field name="model">tai_san</field>
+        <field name="inherit_id" ref="quan_ly_tai_san.view_tai_san_form"/>
+        <field name="arch" type="xml">
+            <!-- Add AI Analysis tab after Thanh lý tab -->
+            <xpath expr="//notebook" position="inside">
+                <page string="Phân tích AI" name="ai_analysis_tab">
+                    <group>
+                        <group>
+                            <button name="action_predict_maintenance" 
+                                    type="object" 
+                                    string="Dự báo bảo trì" 
+                                    class="oe_highlight"
+                                    icon="fa-wrench"
+                                    attrs="{'invisible': [('id', '=', False)]}"/>
+                            <button name="action_analyze_liquidation" 
+                                    type="object" 
+                                    string="Tư vấn thanh lý" 
+                                    class="btn-secondary"
+                                    icon="fa-dollar-sign"
+                                    attrs="{'invisible': [('id', '=', False)]}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Đề xuất Bảo trì AI">
+                            <field name="ai_maintenance_suggestion" 
+                                   nolabel="1" 
+                                   readonly="1"
+                                   widget="html"/>
+                        </group>
+                        <group string="Tư vấn Thanh lý AI">
+                            <field name="ai_liquidation_advice" 
+                                   nolabel="1" 
+                                   readonly="1"
+                                   widget="html"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- AI Chatbot Wizard Form View -->
+    <record id="view_ai_chatbot_form" model="ir.ui.view">
+        <field name="name">ai.chatbot.form</field>
+        <field name="model">ai.chatbot</field>
+        <field name="arch" type="xml">
+            <form string="Trợ lý ảo AI">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="user_question" 
+                                   placeholder="Nhập câu hỏi của bạn về quản lý tài sản, khấu hao, hoặc các vấn đề khác..."/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="ai_answer" 
+                                   nolabel="1" 
+                                   readonly="1"
+                                   widget="html"
+                                   attrs="{'invisible': [('ai_answer', '=', False)]}"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_ask_bot" 
+                            type="object" 
+                            string="Gửi câu hỏi" 
+                            class="oe_highlight"
+                            icon="fa-paper-plane"/>
+                    <button string="Đóng" 
+                            class="btn-secondary" 
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- AI Chatbot Action -->
+    <record id="action_ai_chatbot" model="ir.actions.act_window">
+        <field name="name">Trợ lý ảo AI</field>
+        <field name="res_model">ai.chatbot</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- AI Config Wizard Form View -->
+    <record id="view_ai_config_wizard_form" model="ir.ui.view">
+        <field name="name">ai.config.wizard.form</field>
+        <field name="model">ai.config.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Cấu hình AI - Gemini API Key">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <span>Cấu hình Gemini API Key</span>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="gemini_api_key" 
+                                   password="True"
+                                   placeholder="AIzaSyD5qcmtNLd5dDDTRzEbioqAQjBU8EUJ6Cg"
+                                   required="1"/>
+                            <div class="alert alert-info" role="alert">
+                                <strong>Hướng dẫn lấy API Key:</strong>
+                                <ol>
+                                    <li>Truy cập <a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
+                                    <li>Đăng nhập bằng tài khoản Google</li>
+                                    <li>Click "Create API Key" hoặc "Get API Key"</li>
+                                    <li>Sao chép API Key và dán vào ô trên</li>
+                                </ol>
+                                <p class="mb-0"><strong>Lưu ý:</strong> API Key sẽ được mã hóa và lưu an toàn trong hệ thống.</p>
+                            </div>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_save_config" 
+                            type="object" 
+                            string="Lưu" 
+                            class="oe_highlight"
+                            icon="fa-save"/>
+                    <button string="Hủy" 
+                            class="btn-secondary" 
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- AI Config Wizard Action -->
+    <record id="action_ai_config_wizard" model="ir.actions.act_window">
+        <field name="name">Cấu hình AI</field>
+        <field name="res_model">ai.config.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu Item for AI Chatbot -->
+    <menuitem id="menu_ai_chatbot"
+              name="Trợ lý ảo AI"
+              parent="menu_root_tai_san"
+              action="action_ai_chatbot"
+              sequence="20"/>
+
+    <!-- Menu Item for AI Config -->
+    <menuitem id="menu_ai_config"
+              name="Cấu hình AI"
+              parent="menu_cau_hinh"
+              action="action_ai_config_wizard"
+              sequence="10"/>
+
+</odoo>
+

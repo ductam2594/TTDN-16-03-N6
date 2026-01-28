@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_phong_ban_form" model="ir.ui.view">
+            <field name="name">phong_ban.form</field>
+            <field name="model">phong_ban</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="ten_phong_ban" class="oe_edit_only"/>
+                            <h1><field name="ten_phong_ban" placeholder="Ví dụ: Phòng Kỹ thuật"/></h1>
+                        </div>
+
+                        <group>
+                            <group>
+                                <field name="ma_phong_ban"/>
+                            </group>
+                            <group>
+                                <field name="mo_ta"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Danh sách nhân viên">
+                                <field name="nhan_vien_ids">
+                                    <tree editable="bottom">
+                                        <field name="ma_dinh_danh"/>
+                                        <field name="ho_ten"/> 
+                                        <field name="email"/>
+                                        <field name="luong"/> 
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_phong_ban_tree" model="ir.ui.view">
+            <field name="name">phong_ban.tree</field>
+            <field name="model">phong_ban</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ma_phong_ban"/>
+                    <field name="ten_phong_ban"/>
+                    <field name="mo_ta"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="phong_ban_search">
+            <field name="model">phong_ban</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="ma_phong_ban"/>
+                    <field name="ten_phong_ban"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_phong_ban" model="ir.actions.act_window">
+            <field name="name">Phòng ban</field>
+            <field name="res_model">phong_ban</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="phong_ban_search"/>
+        </record>
+    </data>
+</odoo>

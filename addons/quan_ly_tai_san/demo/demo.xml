@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Demo: Loại tài sản -->
+        <record id="demo_loai_tai_san_may_tinh" model="loai_tai_san">
+            <field name="ma_loai">LTS001</field>
+            <field name="ten_loai">Máy tính</field>
+            <field name="thoi_gian_khau_hao">36</field>
+            <field name="mo_ta">Máy tính để bàn và laptop</field>
+        </record>
+        
+        <record id="demo_loai_tai_san_ban_ghe" model="loai_tai_san">
+            <field name="ma_loai">LTS002</field>
+            <field name="ten_loai">Bàn ghế</field>
+            <field name="thoi_gian_khau_hao">60</field>
+            <field name="mo_ta">Bàn ghế văn phòng</field>
+        </record>
+        
+        <record id="demo_loai_tai_san_thiet_bi" model="loai_tai_san">
+            <field name="ma_loai">LTS003</field>
+            <field name="ten_loai">Thiết bị văn phòng</field>
+            <field name="thoi_gian_khau_hao">48</field>
+            <field name="mo_ta">Máy in, máy fax, máy photocopy</field>
+        </record>
+    </data>
+</odoo>
+
+
+
+
+
+

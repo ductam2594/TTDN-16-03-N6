@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_lich_su_cong_tac_form" model="ir.ui.view">
+            <field name="name">lich_su_cong_tac.form</field>
+            <field name="model">lich_su_cong_tac</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group col="4">
+                            <field name="nhan_vien_id"/>
+                            <field name="vi_tri"/>
+                            <field name="tu_ngay"/>
+                            <field name="den_ngay"/>
+                            <field name="don_vi"/>
+                        </group>
+                        <field name="mo_ta" placeholder="Ghi chú thêm..."/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_lich_su_cong_tac_tree" model="ir.ui.view">
+            <field name="name">lich_su_cong_tac.tree</field>
+            <field name="model">lich_su_cong_tac</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="nhan_vien_id"/>
+                    <field name="tu_ngay"/>
+                    <field name="den_ngay"/>
+                    <field name="vi_tri"/>
+                    <field name="don_vi"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_lich_su_cong_tac" model="ir.actions.act_window">
+            <field name="name">Lịch sử công tác</field>
+            <field name="res_model">lich_su_cong_tac</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

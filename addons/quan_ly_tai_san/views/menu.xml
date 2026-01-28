@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Menu chính -->
+        <menuitem id="menu_root_tai_san" name="Quản lý Tài sản" sequence="10"/>
+        
+        <!-- Menu Cấu hình -->
+        <menuitem id="menu_cau_hinh" name="Cấu hình" parent="menu_root_tai_san" sequence="1"/>
+        <menuitem id="menu_loai_tai_san" name="Loại Tài sản" parent="menu_cau_hinh" 
+                  action="action_loai_tai_san" sequence="1"/>
+        
+        <!-- Menu Tài sản -->
+        <menuitem id="menu_tai_san" name="Tài sản" parent="menu_root_tai_san" 
+                  action="action_tai_san" sequence="2"/>
+        
+        <!-- Menu Khấu hao -->
+        <menuitem id="menu_khau_hao" name="Khấu hao" parent="menu_root_tai_san" sequence="3">
+            <menuitem id="menu_khau_hao_list" name="Lịch sử Khấu hao" 
+                      action="action_khau_hao" sequence="1"/>
+            <menuitem id="menu_khau_hao_tinh" name="Tính Khấu hao" 
+                      action="action_tinh_khau_hao_wizard" sequence="2"/>
+        </menuitem>
+        
+        <!-- Menu Kiểm kê -->
+        <menuitem id="menu_kiem_ke" name="Kiểm kê" parent="menu_root_tai_san" 
+                  action="action_phieu_kiem_ke" sequence="4"/>
+        
+        <!-- Menu Bảo trì -->
+        <menuitem id="menu_bao_tri" name="Bảo trì &amp; Sửa chữa" parent="menu_root_tai_san" 
+                  action="action_bao_tri_sua_chua" sequence="5"/>
+        
+        <!-- Menu Thanh lý -->
+        <menuitem id="menu_thanh_ly" name="Thanh lý" parent="menu_root_tai_san" 
+                  action="action_thanh_ly_tai_san" sequence="6"/>
+    </data>
+</odoo>
+
+

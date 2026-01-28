@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- 
+    File này đã được vô hiệu hóa để tránh lỗi khi module payment không được cài đặt.
+    
+    Lỗi xảy ra vì:
+    - File này cố gắng extend view 'payment.view_account_journal_form' 
+    - Nhưng module 'payment' không có trong depends của quan_ly_tai_san
+    - Field 'payment_acquirer_id' không tồn tại trong model 'account.payment.method.line'
+    
+    Nếu bạn cần sử dụng file này:
+    1. Thêm 'payment' vào depends trong __manifest__.py
+    2. Uncomment dòng 'views/payment_fix.xml' trong __manifest__.py
+    3. Sửa lại nội dung file này để phù hợp với cấu trúc hiện tại
+    -->
+</odoo>

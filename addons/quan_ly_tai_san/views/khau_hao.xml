@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_khau_hao_tree" model="ir.ui.view">
+        <field name="name">khau_hao.tree</field>
+        <field name="model">khau_hao</field>
+        <field name="arch" type="xml">
+            <tree string="Khấu hao" decoration-info="state == 'draft'" 
+                  decoration-success="state == 'posted'" 
+                  decoration-muted="state == 'cancelled'">
+                <field name="tai_san_id"/>
+                <field name="thang_khau_hao"/>
+                <field name="so_tien_khau_hao" sum="Tổng khấu hao"/>
+                <field name="gia_tri_con_lai"/>
+                <field name="state"/>
+                <field name="account_move_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_khau_hao_form" model="ir.ui.view">
+        <field name="name">khau_hao.form</field>
+        <field name="model">khau_hao</field>
+        <field name="arch" type="xml">
+            <form string="Khấu hao">
+                <header>
+                    <button name="action_post" type="object" string="Ghi sổ" 
+                            class="oe_highlight" 
+                            attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <button name="action_cancel" type="object" string="Hủy" 
+                            attrs="{'invisible': [('state', '=', 'cancelled')]}"/>
+                    <button name="action_reset_to_draft" type="object" string="Đặt lại Nháp" 
+                            attrs="{'invisible': [('state', '!=', 'cancelled')]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,posted"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="tai_san_id"/>
+                            <field name="thang_khau_hao"/>
+                            <field name="so_tien_khau_hao"/>
+                            <field name="gia_tri_con_lai" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="journal_id"/>
+                            <field name="account_move_id" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_khau_hao_search" model="ir.ui.view">
+        <field name="name">khau_hao.search</field>
+        <field name="model">khau_hao</field>
+        <field name="arch" type="xml">
+            <search string="Tìm kiếm Khấu hao">
+                <field name="tai_san_id"/>
+                <field name="thang_khau_hao"/>
+                <filter string="Nháp" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Đã ghi sổ" name="posted" domain="[('state', '=', 'posted')]"/>
+                <filter string="Đã hủy" name="cancelled" domain="[('state', '=', 'cancelled')]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_khau_hao" model="ir.actions.act_window">
+        <field name="name">Khấu hao</field>
+        <field name="res_model">khau_hao</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_khau_hao_search"/>
+    </record>
+</odoo>
+
+
+
+
+
+
