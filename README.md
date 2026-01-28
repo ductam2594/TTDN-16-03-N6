@@ -67,7 +67,6 @@
 ### 2.1. Ngôn ngữ lập trình
 - **Python 3.10**: Ngôn ngữ chính để phát triển các module
 - **XML**: Định nghĩa views, menus, security rules
-- **JavaScript**: Xử lý tương tác trên giao diện (nếu có)
 
 ### 2.2. Framework và thư viện
 - **Odoo 15.0**: Framework ERP mã nguồn mở
