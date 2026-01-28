@@ -20,11 +20,74 @@
 </div>
 
 ## 📖 1. Giới thiệu
-Platform ERP được áp dụng vào học phần Thực tập doanh nghiệp dựa trên mã nguồn mở Odoo.
 
-## 🔄 2. Cập nhật gần đây
+### 1.1. Về đề tài
 
-### 2.1. Cải thiện Module Quản lý Tài sản
+**Platform ERP** là một hệ thống quản lý doanh nghiệp được phát triển dựa trên nền tảng mã nguồn mở **Odoo 15.0**, được áp dụng vào học phần **Thực tập doanh nghiệp** tại Khoa Công nghệ Thông tin - Đại học Đại Nam.
+
+#### Mục tiêu:
+- Xây dựng một hệ thống ERP hoàn chỉnh để quản lý các hoạt động của doanh nghiệp
+- Tích hợp các module quản lý: Nhân sự, Tài sản, Văn bản, Kế toán
+- Ứng dụng công nghệ AI (Google Gemini) để hỗ trợ phân tích và tư vấn thông minh
+- Tạo môi trường thực hành cho sinh viên trong việc phát triển phần mềm doanh nghiệp
+
+### 1.2. Các chức năng chính
+
+#### 📦 Module Quản lý Tài sản & Khấu hao
+- **Quản lý Loại Tài sản**: Phân loại tài sản, cấu hình thời gian khấu hao, tài khoản kế toán
+- **Quản lý Tài sản**: Quản lý thông tin chi tiết tài sản, gán cho nhân viên, theo dõi trạng thái
+- **Tính Khấu hao Tự động**: Tính khấu hao theo phương pháp đường thẳng, tự động tạo bút toán kế toán
+- **Kiểm kê Tài sản**: Tạo phiếu kiểm kê, so sánh trạng thái thực tế với hệ thống
+- **Bảo trì & Sửa chữa**: Quản lý lịch sử bảo trì, sửa chữa, bảo dưỡng tài sản
+- **Thanh lý Tài sản**: Quản lý quy trình thanh lý, tính lãi/lỗ, tự động tạo bút toán
+- **Trợ lý ảo AI**: Tích hợp Google Gemini AI để:
+  - Dự báo bảo trì tài sản
+  - Tư vấn thanh lý tài sản
+  - Trả lời câu hỏi về tài sản, khấu hao, bảo trì
+
+#### 👥 Module Quản lý Nhân sự
+- Quản lý thông tin nhân viên, phòng ban, chức vụ
+- Chấm công, quản lý lương
+- Lịch sử công tác, chứng chỉ
+- Tích hợp với module Tài sản để theo dõi tài sản được gán cho nhân viên
+
+#### 📄 Module Quản lý Văn bản
+- Quản lý văn bản đến, văn bản đi
+- Workflow xử lý văn bản
+- Phân loại và tìm kiếm văn bản
+
+#### 💰 Tích hợp Kế toán
+- Tự động tạo bút toán kế toán cho khấu hao
+- Ghi nhận chi phí bảo trì/sửa chữa
+- Xử lý bút toán thanh lý tài sản
+- Liên kết với module Kế toán của Odoo
+
+## 💻 2. Ngôn ngữ lập trình và công nghệ sử dụng
+
+### 2.1. Ngôn ngữ lập trình
+- **Python 3.10**: Ngôn ngữ chính để phát triển các module
+- **XML**: Định nghĩa views, menus, security rules
+- **JavaScript**: Xử lý tương tác trên giao diện (nếu có)
+
+### 2.2. Framework và thư viện
+- **Odoo 15.0**: Framework ERP mã nguồn mở
+- **PostgreSQL**: Hệ quản trị cơ sở dữ liệu
+- **Google Generative AI (Gemini)**: API AI để phân tích và tư vấn
+- **Python Libraries**:
+  - `odoo`: Core framework
+  - `google-generativeai`: Tích hợp Google Gemini AI
+  - `psycopg2`: Kết nối PostgreSQL
+  - `dateutil`: Xử lý ngày tháng
+
+### 2.3. Công cụ và môi trường
+- **Docker**: Chạy PostgreSQL database
+- **Virtual Environment (venv)**: Quản lý môi trường Python
+- **Git**: Quản lý phiên bản mã nguồn
+- **WSL (Windows Subsystem for Linux)**: Môi trường phát triển trên Windows
+
+## 🔄 3. Cập nhật gần đây
+
+### 3.1. Cải thiện Module Quản lý Tài sản
 
 #### ✅ Sửa lỗi hiển thị định dạng số tiền
 - **Vấn đề:** Các trường giá trị tiền hiển thị với ",00" (ví dụ: `30.000.000,00`)
@@ -69,7 +132,7 @@ Platform ERP được áp dụng vào học phần Thực tập doanh nghiệp d
   - Cải thiện cách trình bày thông tin trong prompt để AI dễ hiểu hơn
 - **Kết quả:** AI tư vấn thanh lý chính xác, không còn nói sai về tình trạng khấu hao
 
-### 2.2. Tóm tắt các file đã chỉnh sửa
+### 3.2. Tóm tắt các file đã chỉnh sửa
 - `addons/quan_ly_tai_san/models/tai_san.py` - Sửa format số tiền, sửa hàm AI, cải thiện prompt
 - `addons/quan_ly_tai_san/models/khau_hao.py` - Sửa format số tiền
 - `addons/quan_ly_tai_san/models/thanh_ly_tai_san.py` - Sửa format số tiền
@@ -78,28 +141,28 @@ Platform ERP được áp dụng vào học phần Thực tập doanh nghiệp d
 - `addons/quan_ly_tai_san/wizard/ai_chatbot.py` - Cải thiện database summary, format số liệu, cải thiện prompt 
 
 
-## 🚀 3. Các project đã thực hiện dựa trên Platform
+## 🚀 4. Các project đã thực hiện dựa trên Platform
 
 Một số project sinh viên đã thực hiện:
 - #### [Khoá 15](./docs/projects/K15/README.md)
 - #### [Khoá 16]() (Coming soon)
 
-## ⚙️ 4. Cài đặt
+## ⚙️ 5. Cài đặt
 
-### 4.1. Cài đặt công cụ, môi trường và các thư viện cần thiết
+### 5.1. Cài đặt công cụ, môi trường và các thư viện cần thiết
 
-#### 4.1.1. Clone project.
+#### 5.1.1. Clone project.
 ```
 git clone https://gitlab.com/anhlta/odoo-fitdnu.git
 cd odoo-fitdnu
 ```
-#### 4.1.2. Cài đặt các thư viện cần thiết
+#### 5.1.2. Cài đặt các thư viện cần thiết
 Người sử dụng thực thi các lệnh sau đề cài đặt các thư viện cần thiết
 
 ```
 sudo apt-get install libxml2-dev libxslt-dev libldap2-dev libsasl2-dev libssl-dev python3.10-distutils python3.10-dev build-essential libssl-dev libffi-dev zlib1g-dev python3.10-venv libpq-dev
 ```
-#### 4.1.3. Khởi tạo môi trường ảo.
+#### 5.1.3. Khởi tạo môi trường ảo.
 - Khởi tạo môi trường ảo
 ```
 python3.10 -m venv ./venv
@@ -112,13 +175,13 @@ source venv/bin/activate
 ```
 pip3 install -r requirements.txt
 ```
-### 4.2. Setup database
+### 5.2. Setup database
 
 Khởi tạo database trên docker bằng việc thực thi file dockercompose.yml.
 ```
 sudo docker-compose up -d
 ```
-### 4.3. Setup tham số chạy cho hệ thống
+### 5.3. Setup tham số chạy cho hệ thống
 Tạo tệp **odoo.conf** có nội dung như sau:
 ```
 [options]
@@ -130,7 +193,7 @@ db_port = 5431
 xmlrpc_port = 8069
 ```
 Có thể kế thừa từ file **odoo.conf.template**
-### 4.4. Chạy hệ thống và cài đặt các ứng dụng cần thiết
+### 5.4. Chạy hệ thống và cài đặt các ứng dụng cần thiết
 Lệnh chạy
 ```
 python3 odoo-bin.py -c odoo.conf -u all
