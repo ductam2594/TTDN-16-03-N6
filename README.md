@@ -67,6 +67,7 @@
 ### 2.1. Ngôn ngữ lập trình
 - **Python 3.10**: Ngôn ngữ chính để phát triển các module
 - **XML**: Định nghĩa views, menus, security rules
+- **JavaScript**: Xử lý tương tác trên giao diện (nếu có)
 
 ### 2.2. Framework và thư viện
 - **Odoo 15.0**: Framework ERP mã nguồn mở
@@ -84,12 +85,26 @@
 - **Git**: Quản lý phiên bản mã nguồn
 - **WSL (Windows Subsystem for Linux)**: Môi trường phát triển trên Windows
 
+## 🖼️ 3. Hình ảnh giao diện
 
-## 🚀 3. Các project đã thực hiện dựa trên Platform
+### 3.1. Giao diện Quản lý Tài sản
+- **Danh sách tài sản**: Hiển thị danh sách tất cả tài sản với thông tin cơ bản
+- **Form chi tiết tài sản**: Quản lý thông tin đầy đủ về tài sản, khấu hao, bảo trì
+- **Tab Phân tích AI**: Tích hợp AI để dự báo bảo trì và tư vấn thanh lý
 
-Một số project sinh viên đã thực hiện:
-- #### [Khoá 15](./docs/projects/K15/README.md)
-- #### [Khoá 16]() (Coming soon)
+### 3.2. Giao diện Khấu hao
+- **Lịch sử khấu hao**: Xem tất cả các bút toán khấu hao đã ghi sổ
+- **Wizard tính khấu hao**: Tính khấu hao cho tháng bất kỳ
+
+### 3.3. Giao diện Bảo trì & Sửa chữa
+- **Danh sách bảo trì**: Quản lý các phiếu bảo trì, sửa chữa
+- **Form chi tiết**: Ghi nhận thông tin bảo trì, chi phí, người thực hiện
+
+### 3.4. Giao diện Trợ lý ảo AI
+- **Chatbot AI**: Tương tác với AI để hỏi về tài sản, khấu hao, bảo trì
+- **Cấu hình AI**: Cấu hình API Key cho Google Gemini
+
+> 💡 *Lưu ý: Hình ảnh chi tiết sẽ được cập nhật sau*
 
 ## ⚙️ 4. Cài đặt
 
@@ -147,6 +162,31 @@ Người sử dụng truy cập theo đường dẫn _http://localhost:8069/_ đ
 ## 📝 5. License
 
 © 2024 AIoTLab, Faculty of Information Technology, DaiNam University. All rights reserved.
+
+---
+
+## 📚 Phụ lục
+
+### 🔄 Cập nhật gần đây
+
+#### ✅ Sửa lỗi hiển thị định dạng số tiền
+- Đã đổi `digits` từ `(16, 2)` sang `(16, 0)` cho tất cả các trường giá trị tiền
+- Giá trị tiền hiển thị không có phần thập phân (ví dụ: `30.000.000`)
+
+#### ✅ Sửa lỗi AI không hiển thị dữ liệu
+- Sửa hàm `action_predict_maintenance()` và `action_analyze_liquidation()` để reload form sau khi ghi dữ liệu
+- Form tự động reload và hiển thị đầy đủ dữ liệu AI sau khi xử lý
+
+#### ✅ Cải thiện AI Chatbot
+- Format số liệu với 2 chữ số thập phân để không bị làm tròn sai
+- Thêm lịch sử bảo trì/sửa chữa vào thông tin chi tiết từng tài sản
+- Cải thiện prompt để AI trả lời chính xác và chi tiết hơn
+
+### 🚀 Các project đã thực hiện dựa trên Platform
+
+Một số project sinh viên đã thực hiện:
+- #### [Khoá 15](./docs/projects/K15/README.md)
+- #### [Khoá 16]() (Coming soon)
 
 ---
 
