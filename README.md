@@ -85,21 +85,35 @@
 - **WSL (Windows Subsystem for Linux)**: Môi trường phát triển trên Windows
 
 ## 🖼️ 3. Hình ảnh giao diện
-
 ### 3.1. Giao diện Quản lý Tài sản
+<p align="center">
+  <img src="docs/logo/tai san.jpg" alt="" width="700"/>
+</p>
+
 - **Danh sách tài sản**: Hiển thị danh sách tất cả tài sản với thông tin cơ bản
 - **Form chi tiết tài sản**: Quản lý thông tin đầy đủ về tài sản, khấu hao, bảo trì
 - **Tab Phân tích AI**: Tích hợp AI để dự báo bảo trì và tư vấn thanh lý
 
 ### 3.2. Giao diện Khấu hao
+<p align="center">
+  <img src="docs/logo/z7474622662167_1783dbc7863f03556c51e63914842b73.jpg" alt="" width="700"/>
+</p>
+
 - **Lịch sử khấu hao**: Xem tất cả các bút toán khấu hao đã ghi sổ
 - **Wizard tính khấu hao**: Tính khấu hao cho tháng bất kỳ
 
 ### 3.3. Giao diện Bảo trì & Sửa chữa
+<p align="center">
+  <img src="docs/logo/z7474625268914_17149b63910ca1ed59f20d1db936f51c.jpg" alt="" width="700"/>
+</p>
+
 - **Danh sách bảo trì**: Quản lý các phiếu bảo trì, sửa chữa
 - **Form chi tiết**: Ghi nhận thông tin bảo trì, chi phí, người thực hiện
 
 ### 3.4. Giao diện Trợ lý ảo AI
+<p align="center">
+  <img src="docs/logo/ai.jpg" alt="" width="700"/>
+</p>
 - **Chatbot AI**: Tương tác với AI để hỏi về tài sản, khấu hao, bảo trì
 - **Cấu hình AI**: Cấu hình API Key cho Google Gemini
 
