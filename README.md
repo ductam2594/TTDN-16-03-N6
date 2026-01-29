@@ -4,7 +4,7 @@
     </a>
 </h2>
 <h2 align="center">
-    PLATFORM ERP
+    QUẢN LÝ TÀI SẢN TÍCH HỢP QUẢN LÝ TÀI CHÍNH - KẾ TOÁN
 </h2>
 <div align="center">
     <p align="center">
